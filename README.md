@@ -34,7 +34,7 @@ This portfolio is hosted using GitHub Pages. You can view it live at:
 
 ## Contact
 
-Feel free to reach out to me via the contact form on the website or through my email: [your-email@example.com](mailto:your-email@example.com).
+Feel free to reach out to me via the contact form on the website or through my email: [basitsherazi319@gmail.com](mailto:basitsherazi319@gmail.com).
 
 ---
 
