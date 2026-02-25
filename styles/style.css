@@ -41,6 +41,12 @@ section#projects .project {
     margin-bottom: 1rem;
 }
 
+section#experience .experience {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
 footer {
     text-align: center;
     padding: 1rem;
