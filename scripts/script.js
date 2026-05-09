@@ -1,90 +1,57 @@
-// Placeholder for JavaScript functionality
-// Add interactivity or dynamic features here
-console.log('Portfolio loaded successfully!');
-
-// Smooth scrolling for navigation links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Form validation for the contact form
-const form = document.querySelector('form');
-form.addEventListener('submit', function (e) {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) {
-        e.preventDefault();
-        alert('Please fill out all fields before submitting.');
-    }
+// Back to top button
+const backToTop = document.createElement('button');
+backToTop.textContent = '↑';
+backToTop.id = 'back-to-top';
+Object.assign(backToTop.style, {
+    position: 'fixed', bottom: '20px', right: '20px',
+    display: 'none', padding: '10px 14px',
+    border: 'none', borderRadius: '5px',
+    backgroundColor: '#007BFF', color: '#fff',
+    cursor: 'pointer', zIndex: '1000', fontSize: '1rem'
 });
-
-// Back to Top Button
-const backToTopButton = document.createElement('button');
-backToTopButton.textContent = '↑';
-backToTopButton.id = 'back-to-top';
-backToTopButton.style.position = 'fixed';
-backToTopButton.style.bottom = '20px';
-backToTopButton.style.right = '20px';
-backToTopButton.style.display = 'none';
-backToTopButton.style.padding = '10px';
-backToTopButton.style.border = 'none';
-backToTopButton.style.borderRadius = '5px';
-backToTopButton.style.backgroundColor = '#007BFF';
-backToTopButton.style.color = '#fff';
-backToTopButton.style.cursor = 'pointer';
-backToTopButton.style.zIndex = '1000';
-
-document.body.appendChild(backToTopButton);
+document.body.appendChild(backToTop);
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopButton.style.display = 'block';
-    } else {
-        backToTopButton.style.display = 'none';
-    }
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
 });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+// Dark mode toggle
+const darkToggle = document.createElement('button');
+darkToggle.textContent = '🌙';
+darkToggle.id = 'dark-mode-toggle';
+Object.assign(darkToggle.style, {
+    position: 'fixed', bottom: '65px', right: '20px',
+    padding: '10px 14px', border: 'none', borderRadius: '5px',
+    backgroundColor: '#333', color: '#fff',
+    cursor: 'pointer', zIndex: '1000', fontSize: '1rem'
 });
+document.body.appendChild(darkToggle);
 
-// Dark Mode Toggle
-const darkModeToggle = document.createElement('button');
-darkModeToggle.textContent = 'Toggle Dark Mode';
-darkModeToggle.id = 'dark-mode-toggle';
-darkModeToggle.style.position = 'fixed';
-darkModeToggle.style.bottom = '60px';
-darkModeToggle.style.right = '20px';
-darkModeToggle.style.padding = '10px';
-darkModeToggle.style.border = 'none';
-darkModeToggle.style.borderRadius = '5px';
-darkModeToggle.style.backgroundColor = '#333';
-darkModeToggle.style.color = '#fff';
-darkModeToggle.style.cursor = 'pointer';
-darkModeToggle.style.zIndex = '1000';
+const saved = localStorage.getItem('darkMode');
+if (saved === 'true') document.body.classList.add('dark-mode');
 
-document.body.appendChild(darkModeToggle);
-
-darkModeToggle.addEventListener('click', () => {
+darkToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
 
-// Add dark mode styles dynamically
-const darkModeStyles = document.createElement('style');
-darkModeStyles.textContent = `
-    body.dark-mode {
-        background-color: #121212;
-        color: #ffffff;
-    }
-    body.dark-mode a {
-        color: #90caf9;
+const darkStyles = document.createElement('style');
+darkStyles.textContent = `
+    body.dark-mode { background-color: #121212; color: #e0e0e0; }
+    body.dark-mode header { background-color: #1a1a2e; }
+    body.dark-mode nav ul li a { color: #90caf9; }
+    body.dark-mode a { color: #90caf9; }
+    body.dark-mode .project, body.dark-mode .experience {
+        background-color: #1e1e1e; border-color: #333;
     }
 `;
-document.head.appendChild(darkModeStyles);
+document.head.appendChild(darkStyles);
