@@ -1,0 +1,46 @@
+name: HTML & CSS Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-html:
+    name: Validate HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Validate index.html
+        run: html-validate index.html
+
+  lint-css:
+    name: Lint CSS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install stylelint
+        run: npm install -g stylelint stylelint-config-standard
+
+      - name: Create stylelint config
+        run: |
+          cat > .stylelintrc.json << 'EOF'
+          {
+            "extends": ["stylelint-config-standard"],
+            "rules": {
+              "color-function-notation": "modern",
+              "alpha-value-notation": "percentage",
+              "declaration-block-no-redundant-longhand-properties": null,
+              "no-descending-specificity": null
+            }
+          }
+          EOF
+
+      - name: Lint styles/style.css
+        run: stylelint "styles/**/*.css"
