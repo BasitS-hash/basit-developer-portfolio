@@ -50,12 +50,12 @@
   <!-- ============================================================
        NAV
   ============================================================ -->
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <nav class="nav-inner" aria-label="Primary navigation">
       <a href="#hero" class="nav-logo" aria-label="Basit Sherazi — home">
         <span aria-hidden="true">BS</span>
       </a>
-      <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Toggle navigation menu">
+      <button type="button" class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Toggle navigation menu">
         <span class="hamburger" aria-hidden="true"></span>
       </button>
       <ul class="nav-list" id="nav-list" role="list">
@@ -80,7 +80,7 @@
     ============================================================ -->
     <section id="hero" class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
-        <div class="hero-badge" aria-label="Current status">
+        <div class="hero-badge">
           <span class="badge-dot" aria-hidden="true"></span>
           Available for Summer 2027 &amp; Full-Time 2029
         </div>
@@ -133,35 +133,35 @@
             <h3 class="about-certs-heading">Certifications</h3>
             <ul class="cert-list" role="list">
               <li class="cert-item cert-inprogress">
-                <span class="cert-badge" aria-label="In progress">In Progress</span>
+                <span class="cert-badge">In Progress</span>
                 Microsoft Azure Security Engineer Associate (AZ-500)
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                <span class="cert-badge cert-badge--earned">2026</span>
                 Microsoft Certified: Azure Administrator Associate (AZ-104)
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                <span class="cert-badge cert-badge--earned">2026</span>
                 CompTIA Security+
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                <span class="cert-badge cert-badge--earned">2026</span>
                 NSE 1 Network Security Associate &mdash; Fortinet
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                <span class="cert-badge cert-badge--earned">2026</span>
                 Building with the Claude API &mdash; Anthropic
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                <span class="cert-badge cert-badge--earned">2026</span>
                 Anthropic AI Fluency Certification
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2025</span>
+                <span class="cert-badge cert-badge--earned">2025</span>
                 DSPy: Build &amp; Optimize Agentic Apps &mdash; DeepLearning.AI
               </li>
               <li class="cert-item">
-                <span class="cert-badge cert-badge--earned" aria-label="Earned">2025</span>
+                <span class="cert-badge cert-badge--earned">2025</span>
                 LangChain for LLM Application Development &mdash; DeepLearning.AI
               </li>
             </ul>
@@ -270,7 +270,7 @@
       <div class="section-inner">
         <span class="section-label" aria-hidden="true">03 / Experience</span>
         <h2 id="experience-heading" class="section-heading">Professional Experience</h2>
-        <ol class="timeline" role="list">
+        <ol class="timeline">
 
           <li class="timeline-item">
             <div class="timeline-marker" aria-hidden="true"></div>
@@ -286,7 +286,7 @@
                 <li>Designed scalable benchmarking infrastructure; contributed technical documentation aligned with NSM-10 and OMB M-23-02 compliance, reviewed by senior engineers</li>
                 <li>Shipped Python tooling reviewed and merged to production in an agile cross-functional team</li>
               </ul>
-              <div class="timeline-tags" aria-label="Technologies used">
+              <div class="timeline-tags" role="group" aria-label="Technologies used">
                 <span>Python</span><span>Post-Quantum Cryptography</span><span>NIST FIPS 203/204/205</span><span>Federal Systems</span>
               </div>
             </div>
@@ -305,7 +305,7 @@
                 <li>Curated and annotated large-scale multi-modal AI training datasets; designed and executed RLHF preference model training pipelines via systematic pairwise comparisons</li>
                 <li>Contributed to ML data pipelines for production NLP models — quality filters, structured annotation schemas, and inter-annotator consistency checks at scale</li>
               </ul>
-              <div class="timeline-tags" aria-label="Technologies used">
+              <div class="timeline-tags" role="group" aria-label="Technologies used">
                 <span>RLHF</span><span>NLP</span><span>LLM Alignment</span><span>Multi-modal Data</span>
               </div>
             </div>
@@ -324,7 +324,7 @@
                 <li>Tier 1 &amp; Tier 2 technical support; systematic troubleshooting across complex hardware and software issues</li>
                 <li>Hardware repairs and OS migrations across Windows and macOS environments; maintained high customer NPS</li>
               </ul>
-              <div class="timeline-tags" aria-label="Technologies used">
+              <div class="timeline-tags" role="group" aria-label="Technologies used">
                 <span>Windows</span><span>macOS</span><span>Hardware Repair</span><span>Customer Support</span>
               </div>
             </div>
@@ -453,20 +453,26 @@
           Open to security engineering, DevSecOps, and cloud infrastructure roles &mdash; internships and full-time.
           Reach out directly:
         </p>
-        <div class="contact-links" role="list">
-          <a href="mailto:basitsherazi319@gmail.com" class="contact-card" role="listitem" aria-label="Send email to basitsherazi319@gmail.com">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>basitsherazi319@gmail.com</span>
-          </a>
-          <a href="https://www.linkedin.com/in/basitsherazi" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="LinkedIn profile (opens in new tab)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            <span>linkedin.com/in/basitsherazi</span>
-          </a>
-          <a href="https://github.com/BasitS-hash" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="GitHub profile (opens in new tab)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            <span>github.com/BasitS-hash</span>
-          </a>
-        </div>
+        <ul class="contact-links">
+          <li>
+            <a href="mailto:basitsherazi319@gmail.com" class="contact-card" aria-label="Send email to basitsherazi319@gmail.com">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>basitsherazi319@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/basitsherazi" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="LinkedIn profile (opens in new tab)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>linkedin.com/in/basitsherazi</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/BasitS-hash" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="GitHub profile (opens in new tab)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>github.com/BasitS-hash</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -475,7 +481,7 @@
   <!-- ============================================================
        FOOTER
   ============================================================ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-copy">&copy; 2026 Basit Sherazi. Built with HTML, CSS &amp; vanilla JS.</p>
       <nav aria-label="Footer navigation">
@@ -489,7 +495,7 @@
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top" hidden>
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" hidden>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
