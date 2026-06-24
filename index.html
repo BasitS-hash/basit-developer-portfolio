@@ -2,159 +2,498 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basit Sherazi — DevSecOps & Cloud Security</title>
-    <link rel="stylesheet" href="styles/style.css?v=3">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Basit Sherazi — DevSecOps engineer, cloud security practitioner, and IT/Cybersecurity student at George Mason University. Security+, AZ-104 certified.">
-    <meta name="keywords" content="Basit Sherazi, DevSecOps, cloud security, cybersecurity, FastAPI, Docker, GitHub Actions, AZ-104, Security+, GMU, George Mason University, Post-Quantum Cryptography">
-    <meta name="author" content="Basit Sherazi">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basit Sherazi — DevSecOps &amp; Cloud Security Engineer</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Basit Sherazi — DevSecOps engineer and cloud security practitioner. Post-Quantum Cryptography research at DMI, Security+ &amp; AZ-104 certified, George Mason University. Available for security and DevOps roles in 2026.">
+  <meta name="author" content="Basit Sherazi">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Basit Sherazi — DevSecOps &amp; Cloud Security Engineer">
+  <meta property="og:description" content="Post-Quantum Cryptography research at DMI. Security+, AZ-104 certified. Building secure systems with FastAPI, Docker, and GitHub Actions CI/CD.">
+  <meta property="og:url" content="https://basits-hash.github.io/basit-developer-portfolio/">
+  <meta property="og:image" content="https://basits-hash.github.io/basit-developer-portfolio/images/og-card.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Basit Sherazi — DevSecOps &amp; Cloud Security Engineer">
+  <meta name="twitter:description" content="Post-Quantum Cryptography research at DMI. Security+, AZ-104 certified. George Mason University.">
+  <meta name="twitter:image" content="https://basits-hash.github.io/basit-developer-portfolio/images/og-card.png">
+
+  <!-- Security headers via meta -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self';">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts: Inter (body) + Space Grotesk (headings) — preconnect first -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://www.linkedin.com/in/basitsherazi" target="_blank">LinkedIn</a></li>
-            </ul>
-        </nav>
-        <h1>BASIT SHERAZI</h1>
-        <p>IT & Cybersecurity Student | DevSecOps | Cloud Security | George Mason University — Dean's List, GPA 3.7</p>
-    </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a sophomore at George Mason University studying Information Technology with a cybersecurity concentration, on track to graduate December 2028. I'm building toward a career in DevSecOps and cloud security — focused on the intersection of secure software delivery, cloud infrastructure, and applied cryptography.</p>
+  <!-- Skip to main for keyboard users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-        <p>Currently I'm an Associate Software Engineering Intern at DMI (Digital Management, LLC) in Tysons Corner, where I'm doing applied Post-Quantum Cryptography research — implementing and benchmarking NIST FIPS 203/204/205 algorithms (ML-KEM, ML-DSA, SLH-DSA) to replace RSA/ECC in federal systems ahead of the 2035 quantum-readiness mandate. Previously I worked as an AI Data Specialist at RWS Group running RLHF preference model training pipelines for production LLM systems.</p>
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <nav class="nav-inner" aria-label="Primary navigation">
+      <a href="#hero" class="nav-logo" aria-label="Basit Sherazi — home">
+        <span aria-hidden="true">BS</span>
+      </a>
+      <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-list" id="nav-list" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/basitsherazi" target="_blank" rel="noopener noreferrer" class="nav-cta">
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-        <p>On the engineering side, I build full-stack applications with Python FastAPI and React, containerize them with Docker, and ship them through GitHub Actions CI/CD pipelines with automated security scanning (Bandit, pip-audit, Trivy). I implement production-grade security features including AES-256-GCM encryption, Argon2id hashing, JWT authentication, and rate limiting. I monitor systems with Prometheus and Grafana.</p>
+  <main id="main">
 
-        <ul>
-            <li><strong>Languages & Frameworks:</strong> Python, FastAPI, React, JavaScript, SQL, Bash, HTML5/CSS3</li>
-            <li><strong>Infrastructure & DevOps:</strong> Docker, GitHub Actions CI/CD, Prometheus/Grafana, Linux Administration, Git</li>
-            <li><strong>Security:</strong> AES-256-GCM, Argon2id, JWT Auth, Bandit, pip-audit, Trivy, Ethical Hacking, Cryptography, DoD 8570/8140, CISA CDM</li>
-            <li><strong>Cloud:</strong> Microsoft Azure (AZ-104), Azure Container Registry</li>
-            <li><strong>ML & AI:</strong> RLHF, Preference Modeling, Multi-modal Dataset Annotation, LangChain, DSPy</li>
-            <li><strong>Cryptography:</strong> Post-Quantum Cryptography (NIST FIPS 203/204/205), ML-KEM, ML-DSA, SLH-DSA, Cryptographic Agility</li>
-        </ul>
-
-        <h3>Certifications</h3>
-        <ul>
-            <li><strong>Security & Cloud:</strong></li>
-            <ul>
-                <li>Microsoft Azure Security Engineer Associate (AZ-500) — <em>In Progress</em></li>
-                <li>Microsoft Certified: Azure Administrator Associate (AZ-104), 2026</li>
-                <li>CompTIA Security+, 2026</li>
-                <li>NSE 1 Network Security Associate, Fortinet, 2026</li>
-            </ul>
-            <li><strong>AI & Development:</strong></li>
-            <ul>
-                <li>Building with the Claude API, Anthropic, 2026</li>
-                <li>Anthropic AI Fluency Certification, 2026</li>
-                <li>DSPy: Build and Optimize Agentic Apps, DeepLearning.AI, 2025</li>
-                <li>LangChain for LLM Application Development, DeepLearning.AI, 2025</li>
-            </ul>
-        </ul>
-    </section>
-
-    <section id="experience">
-        <h2>Professional Experience</h2>
-
-        <div class="experience">
-            <h3>Associate Software Engineer Intern</h3>
-            <p><em>DMI (Digital Management, LLC) | Tysons Corner, VA | May 2026 – August 2026</em></p>
-            <ul>
-                <li>Implementing and benchmarking NIST FIPS 203/204/205 quantum-resistant algorithms (ML-KEM, ML-DSA, SLH-DSA) in Python, prototyping cryptographic agility migration tooling to replace RSA/ECC in federal systems ahead of the 2035 mandate</li>
-                <li>Designed scalable benchmarking infrastructure to evaluate algorithm performance across key sizes; contributed technical documentation reviewed by senior engineers aligned with NSM-10 and OMB M-23-02 compliance</li>
-                <li>Collaborated in an agile cross-functional engineering team, shipping Python tooling reviewed and merged to production</li>
-            </ul>
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-badge" aria-label="Current status">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Available for Summer 2027 &amp; Full-Time 2029
         </div>
-
-        <div class="experience">
-            <h3>AI Data Specialist</h3>
-            <p><em>RWS Group | Remote | August 2025 – May 2026</em></p>
-            <ul>
-                <li>Curated and annotated large-scale multi-modal AI training datasets; designed and executed RLHF preference model training pipelines via systematic pairwise comparisons to improve LLM output quality and safety alignment</li>
-                <li>Contributed to machine learning data pipelines supporting production NLP model development — applying quality filters, structured annotation schemas, and inter-annotator consistency checks at scale</li>
-            </ul>
-        </div>
-
-        <div class="experience">
-            <h3>Geek Squad Technician</h3>
-            <p><em>Best Buy Co., Inc. | Fairfax, VA | November 2025 – May 2026</em></p>
-            <ul>
-                <li>Provided Tier 1 & Tier 2 technical support; performed systematic troubleshooting across complex hardware and software issues to resolution</li>
-                <li>Executed hardware repairs and OS migrations across Windows and macOS environments while maintaining high customer satisfaction (NPS)</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="project">
-            <h3>DevOps Task Manager</h3>
-            <p><em>Personal Open Source Project</em></p>
-            <ul>
-                <li>Built a production-grade full-stack task manager with a Python FastAPI backend, React frontend, and MongoDB — containerized with Docker multi-stage builds (non-root user) and orchestrated via Docker Compose across 5 services (API, frontend, database, Prometheus, Grafana)</li>
-                <li>Implemented a 3-job GitHub Actions CI/CD pipeline: automated testing (pytest), security scanning (Bandit static analysis + pip-audit CVE detection + Trivy filesystem scan with SARIF upload to GitHub Security tab), and Docker image builds</li>
-                <li>Designed RESTful API with Pydantic validation, JWT auth, structured error handling, and interactive OpenAPI/Swagger documentation; live Prometheus metrics and Grafana dashboards for observability</li>
-            </ul>
-            <p><strong>Technologies:</strong> Python, FastAPI, React, MongoDB, Docker, GitHub Actions, Prometheus, Grafana, Bandit, Trivy, pip-audit</p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/BasitS-hash/dev-ops-stack" target="_blank">github.com/BasitS-hash/dev-ops-stack</a></p>
-        </div>
-
-        <div class="project">
-            <h3>Secure Password Manager API</h3>
-            <p><em>Personal Cybersecurity Project</em></p>
-            <ul>
-                <li>Designed and deployed a production-grade zero-knowledge password manager REST API using Python FastAPI and PostgreSQL — implementing AES-256-GCM client-side encryption and Argon2id memory-hard hashing driven by a deliberate threat model</li>
-                <li>Built JWT authentication (15-min access / 7-day refresh), slowapi rate limiting, brute force protection, and full audit logging with IP tracking; containerized with Docker, deployed via CI/CD to Railway</li>
-                <li>Documented with an interactive Swagger/OpenAPI spec demonstrating full DevSecOps lifecycle from secure development to production deployment</li>
-            </ul>
-            <p><strong>Technologies:</strong> Python, FastAPI, PostgreSQL, AES-256-GCM, Argon2id, JWT, Docker, Railway, CI/CD, Swagger/OpenAPI</p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/BasitS-hash/Secure-PasswordManager-API" target="_blank">github.com/BasitS-hash/Secure-PasswordManager-API</a></p>
-        </div>
-
-        <div class="project">
-            <h3>Personal Developer Portfolio</h3>
-            <p><em>Personal Project | 2025 – Present</em></p>
-            <ul>
-                <li>Designed and built this responsive portfolio website from scratch using HTML5, CSS3, and vanilla JavaScript</li>
-                <li>Deployed via GitHub Pages with continuous integration for automated updates on every push</li>
-            </ul>
-            <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, GitHub Pages</p>
-            <p><strong>Live:</strong> <a href="https://basits-hash.github.io/basit-developer-portfolio-/" target="_blank">basits-hash.github.io/basit-developer-portfolio-/</a> | <strong>GitHub:</strong> <a href="https://github.com/BasitS-hash/basit-developer-portfolio-" target="_blank">github.com/BasitS-hash/basit-developer-portfolio-</a></p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out via email or connect on LinkedIn:</p>
-        <div style="margin: 1.5rem 0;">
-            <p><strong>Email:</strong> <a href="mailto:basitsherazi319@gmail.com">basitsherazi319@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/basitsherazi" target="_blank">linkedin.com/in/basitsherazi</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/BasitS-hash" target="_blank">github.com/BasitS-hash</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Basit Sherazi. All rights reserved.</p>
-        <p>
-            <a href="https://github.com/BasitS-hash" target="_blank">GitHub</a> |
-            <a href="https://www.linkedin.com/in/basitsherazi" target="_blank">LinkedIn</a> |
-            <a href="mailto:basitsherazi319@gmail.com">Email</a>
+        <h1 id="hero-heading" class="hero-name">
+          Basit<br>Sherazi
+        </h1>
+        <p class="hero-title">DevSecOps &amp; Cloud Security Engineer</p>
+        <p class="hero-sub">
+          Post-Quantum Cryptography research at <strong>DMI</strong> &middot;
+          Security<strong>+</strong> &middot; AZ-104 &middot;
+          <strong>George Mason University</strong> &mdash; Dean&rsquo;s List, GPA&nbsp;3.7
         </p>
-    </footer>
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+    </section>
 
-    <script src="scripts/script.js"></script>
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="section-inner">
+        <span class="section-label" aria-hidden="true">01 / About</span>
+        <h2 id="about-heading" class="section-heading">Who I Am</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I&rsquo;m a sophomore at George Mason University studying Information Technology with a
+              cybersecurity concentration, on track to graduate December&nbsp;2028. I&rsquo;m building toward
+              a career in DevSecOps and cloud security &mdash; focused on the intersection of secure software
+              delivery, cloud infrastructure, and applied cryptography.
+            </p>
+            <p>
+              Currently I&rsquo;m an Associate Software Engineering Intern at <strong>DMI (Digital Management,
+              LLC)</strong> in Tysons Corner, doing applied Post-Quantum Cryptography research &mdash;
+              implementing and benchmarking <abbr title="NIST Federal Information Processing Standards">NIST FIPS</abbr>
+              203/204/205 algorithms (ML-KEM, ML-DSA, SLH-DSA) to replace RSA/ECC in federal systems ahead of
+              the 2035 quantum-readiness mandate. Previously an AI Data Specialist at <strong>RWS Group</strong>
+              running RLHF preference model training pipelines for production LLM systems.
+            </p>
+            <p>
+              On the engineering side: FastAPI + React full-stack, Docker containerisation, GitHub Actions
+              CI/CD with automated security scanning (Bandit, pip-audit, Trivy), and Prometheus/Grafana observability.
+            </p>
+          </div>
+          <div class="about-certs">
+            <h3 class="about-certs-heading">Certifications</h3>
+            <ul class="cert-list" role="list">
+              <li class="cert-item cert-inprogress">
+                <span class="cert-badge" aria-label="In progress">In Progress</span>
+                Microsoft Azure Security Engineer Associate (AZ-500)
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                Microsoft Certified: Azure Administrator Associate (AZ-104)
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                CompTIA Security+
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                NSE 1 Network Security Associate &mdash; Fortinet
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                Building with the Claude API &mdash; Anthropic
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2026</span>
+                Anthropic AI Fluency Certification
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2025</span>
+                DSPy: Build &amp; Optimize Agentic Apps &mdash; DeepLearning.AI
+              </li>
+              <li class="cert-item">
+                <span class="cert-badge cert-badge--earned" aria-label="Earned">2025</span>
+                LangChain for LLM Application Development &mdash; DeepLearning.AI
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS
+    ============================================================ -->
+    <section id="skills" class="section section--alt" aria-labelledby="skills-heading">
+      <div class="section-inner">
+        <span class="section-label" aria-hidden="true">02 / Skills</span>
+        <h2 id="skills-heading" class="section-heading">Technical Stack</h2>
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="skill-card-heading">Security</h3>
+            <ul class="skill-tags" role="list">
+              <li>AES-256-GCM</li>
+              <li>Argon2id</li>
+              <li>JWT Auth</li>
+              <li>Post-Quantum Crypto</li>
+              <li>ML-KEM / ML-DSA</li>
+              <li>SLH-DSA</li>
+              <li>Bandit</li>
+              <li>pip-audit</li>
+              <li>Trivy</li>
+              <li>Ethical Hacking</li>
+              <li>DoD 8570/8140</li>
+              <li>CISA CDM</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3 class="skill-card-heading">Languages &amp; Frameworks</h3>
+            <ul class="skill-tags" role="list">
+              <li>Python</li>
+              <li>FastAPI</li>
+              <li>React</li>
+              <li>JavaScript</li>
+              <li>SQL</li>
+              <li>Bash</li>
+              <li>HTML5/CSS3</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <h3 class="skill-card-heading">Infrastructure &amp; DevOps</h3>
+            <ul class="skill-tags" role="list">
+              <li>Docker</li>
+              <li>GitHub Actions</li>
+              <li>Prometheus</li>
+              <li>Grafana</li>
+              <li>Linux Admin</li>
+              <li>Git</li>
+              <li>CI/CD</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </div>
+            <h3 class="skill-card-heading">Cloud</h3>
+            <ul class="skill-tags" role="list">
+              <li>Microsoft Azure</li>
+              <li>AZ-104</li>
+              <li>Azure Container Registry</li>
+              <li>Azure Security</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3 class="skill-card-heading">ML &amp; AI</h3>
+            <ul class="skill-tags" role="list">
+              <li>RLHF</li>
+              <li>Preference Modeling</li>
+              <li>LangChain</li>
+              <li>DSPy</li>
+              <li>Multi-modal Annotation</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENCE
+    ============================================================ -->
+    <section id="experience" class="section" aria-labelledby="experience-heading">
+      <div class="section-inner">
+        <span class="section-label" aria-hidden="true">03 / Experience</span>
+        <h2 id="experience-heading" class="section-heading">Professional Experience</h2>
+        <ol class="timeline" role="list">
+
+          <li class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-meta">
+                <span class="timeline-company">DMI (Digital Management, LLC)</span>
+                <span class="timeline-period">May 2026 – Aug 2026</span>
+              </div>
+              <h3 class="timeline-role">Associate Software Engineer Intern</h3>
+              <p class="timeline-location">Tysons Corner, VA</p>
+              <ul class="timeline-bullets" role="list">
+                <li>Implementing and benchmarking NIST FIPS 203/204/205 quantum-resistant algorithms (ML-KEM, ML-DSA, SLH-DSA) in Python; prototyping cryptographic agility migration tooling to replace RSA/ECC in federal systems ahead of the 2035 mandate</li>
+                <li>Designed scalable benchmarking infrastructure; contributed technical documentation aligned with NSM-10 and OMB M-23-02 compliance, reviewed by senior engineers</li>
+                <li>Shipped Python tooling reviewed and merged to production in an agile cross-functional team</li>
+              </ul>
+              <div class="timeline-tags" aria-label="Technologies used">
+                <span>Python</span><span>Post-Quantum Cryptography</span><span>NIST FIPS 203/204/205</span><span>Federal Systems</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-meta">
+                <span class="timeline-company">RWS Group</span>
+                <span class="timeline-period">Aug 2025 – May 2026</span>
+              </div>
+              <h3 class="timeline-role">AI Data Specialist</h3>
+              <p class="timeline-location">Remote</p>
+              <ul class="timeline-bullets" role="list">
+                <li>Curated and annotated large-scale multi-modal AI training datasets; designed and executed RLHF preference model training pipelines via systematic pairwise comparisons</li>
+                <li>Contributed to ML data pipelines for production NLP models — quality filters, structured annotation schemas, and inter-annotator consistency checks at scale</li>
+              </ul>
+              <div class="timeline-tags" aria-label="Technologies used">
+                <span>RLHF</span><span>NLP</span><span>LLM Alignment</span><span>Multi-modal Data</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-meta">
+                <span class="timeline-company">Best Buy Co., Inc.</span>
+                <span class="timeline-period">Nov 2025 – May 2026</span>
+              </div>
+              <h3 class="timeline-role">Geek Squad Technician</h3>
+              <p class="timeline-location">Fairfax, VA</p>
+              <ul class="timeline-bullets" role="list">
+                <li>Tier 1 &amp; Tier 2 technical support; systematic troubleshooting across complex hardware and software issues</li>
+                <li>Hardware repairs and OS migrations across Windows and macOS environments; maintained high customer NPS</li>
+              </ul>
+              <div class="timeline-tags" aria-label="Technologies used">
+                <span>Windows</span><span>macOS</span><span>Hardware Repair</span><span>Customer Support</span>
+              </div>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+    ============================================================ -->
+    <section id="projects" class="section section--alt" aria-labelledby="projects-heading">
+      <div class="section-inner">
+        <span class="section-label" aria-hidden="true">04 / Projects</span>
+        <h2 id="projects-heading" class="section-heading">Featured Projects</h2>
+        <div class="projects-grid">
+
+          <article class="project-card project-card--featured" aria-labelledby="proj-siem">
+            <div class="project-card-header">
+              <span class="project-num" aria-hidden="true">01</span>
+              <div class="project-links">
+                <a href="https://github.com/BasitS-hash/siem-dashboard" target="_blank" rel="noopener noreferrer" aria-label="SIEM Dashboard on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <h3 id="proj-siem" class="project-title">SIEM Dashboard</h3>
+            <p class="project-desc">
+              Real-time Security Information and Event Management dashboard for ingesting, correlating, and visualising security events. Streams log data, surfaces anomalies, and provides a single-pane-of-glass view for incident triage — built with the same philosophy as enterprise SIEM tools but as a deployable open-source project.
+            </p>
+            <ul class="project-tags" role="list" aria-label="Technologies used">
+              <li>Python</li><li>FastAPI</li><li>React</li><li>Security Analytics</li><li>Log Correlation</li>
+            </ul>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-pwmgr">
+            <div class="project-card-header">
+              <span class="project-num" aria-hidden="true">02</span>
+              <div class="project-links">
+                <a href="https://github.com/BasitS-hash/Secure-PasswordManager-API" target="_blank" rel="noopener noreferrer" aria-label="Secure Password Manager API on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <h3 id="proj-pwmgr" class="project-title">Secure Password Manager API</h3>
+            <p class="project-desc">
+              Production-grade zero-knowledge REST API. AES-256-GCM client-side encryption, Argon2id memory-hard hashing, JWT auth (15-min access / 7-day refresh), slowapi rate limiting, brute-force protection, and full audit logging with IP tracking. Deployed via CI/CD to Railway with interactive Swagger/OpenAPI documentation.
+            </p>
+            <ul class="project-tags" role="list" aria-label="Technologies used">
+              <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>AES-256-GCM</li><li>Argon2id</li><li>Docker</li><li>Railway</li>
+            </ul>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-iragent">
+            <div class="project-card-header">
+              <span class="project-num" aria-hidden="true">03</span>
+              <div class="project-links">
+                <a href="https://github.com/BasitS-hash/incident-response-agent" target="_blank" rel="noopener noreferrer" aria-label="Incident Response Agent on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <h3 id="proj-iragent" class="project-title">Incident Response Agent</h3>
+            <p class="project-desc">
+              AI-powered incident response automation agent. Ingests security alerts, runs structured triage playbooks, correlates indicators of compromise, and generates actionable remediation reports — reducing mean time to respond (MTTR) by automating the first-pass analysis tier.
+            </p>
+            <ul class="project-tags" role="list" aria-label="Technologies used">
+              <li>Python</li><li>LLM / AI Agent</li><li>Incident Response</li><li>Automation</li><li>Security</li>
+            </ul>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-devops">
+            <div class="project-card-header">
+              <span class="project-num" aria-hidden="true">04</span>
+              <div class="project-links">
+                <a href="https://github.com/BasitS-hash/dev-ops-stack" target="_blank" rel="noopener noreferrer" aria-label="DevOps Stack on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <h3 id="proj-devops" class="project-title">DevOps Task Manager</h3>
+            <p class="project-desc">
+              Production-grade full-stack task manager: FastAPI backend, React frontend, MongoDB, orchestrated via Docker Compose across 5 services (API, frontend, database, Prometheus, Grafana). 3-job GitHub Actions pipeline: pytest, Bandit + pip-audit + Trivy SARIF scanning, and Docker image builds. Live Prometheus metrics and Grafana dashboards.
+            </p>
+            <ul class="project-tags" role="list" aria-label="Technologies used">
+              <li>Python</li><li>FastAPI</li><li>React</li><li>MongoDB</li><li>Docker Compose</li><li>Prometheus</li><li>Grafana</li>
+            </ul>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-homelab">
+            <div class="project-card-header">
+              <span class="project-num" aria-hidden="true">05</span>
+              <div class="project-links">
+                <a href="https://github.com/BasitS-hash/cybersecurity-homelab2" target="_blank" rel="noopener noreferrer" aria-label="Cybersecurity Homelab on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <h3 id="proj-homelab" class="project-title">Cybersecurity Homelab</h3>
+            <p class="project-desc">
+              Hands-on home lab environment for practising offensive and defensive security techniques. Virtualised network segments for attack simulation, intrusion detection, log analysis, and blue-team exercises — built to mirror real-world SOC workflows and sharpen detection engineering skills.
+            </p>
+            <ul class="project-tags" role="list" aria-label="Technologies used">
+              <li>Linux</li><li>Virtualisation</li><li>IDS/IPS</li><li>Log Analysis</li><li>Blue Team</li><li>Pentesting</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="section-inner section-inner--narrow">
+        <span class="section-label" aria-hidden="true">05 / Contact</span>
+        <h2 id="contact-heading" class="section-heading">Let&rsquo;s Connect</h2>
+        <p class="contact-intro">
+          Open to security engineering, DevSecOps, and cloud infrastructure roles &mdash; internships and full-time.
+          Reach out directly:
+        </p>
+        <div class="contact-links" role="list">
+          <a href="mailto:basitsherazi319@gmail.com" class="contact-card" role="listitem" aria-label="Send email to basitsherazi319@gmail.com">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>basitsherazi319@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/basitsherazi" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="LinkedIn profile (opens in new tab)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>linkedin.com/in/basitsherazi</span>
+          </a>
+          <a href="https://github.com/BasitS-hash" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="GitHub profile (opens in new tab)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <span>github.com/BasitS-hash</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Basit Sherazi. Built with HTML, CSS &amp; vanilla JS.</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer-links" role="list">
+          <li><a href="https://github.com/BasitS-hash" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/basitsherazi" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:basitsherazi319@gmail.com">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>
