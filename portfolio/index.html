@@ -1,0 +1,238 @@
+<!-- ============================================================
+     BASIT SHERAZI — ENGINEERING PORTFOLIO
+     Live at: https://basits-hash.github.io/basit-developer-portfolio/portfolio/
+
+     HOW TO EDIT
+       1. Edit this file (plain HTML — no build step, no framework)
+       2. git add -A && git commit -m "update portfolio" && git push
+       3. Live in ~1 minute
+
+     WHERE THINGS ARE  (search for these markers)
+       [EDIT: COLORS]      colour tokens, light + dark
+       [EDIT: HEADER]      name, intro line, contact links
+       [EDIT: PROJECTS]    one <div class="proj"> block per project
+       [EDIT: OPENSOURCE]  contribution entries
+       [EDIT: EXPERIENCE]  job rows
+       [EDIT: EDUCATION]   degree, GPA, certifications
+
+     ADDING A PROJECT — copy this block into the projects section:
+       <div class="proj">
+         <div class="ptop"><span class="pname">name</span><span class="lang">Language</span></div>
+         <p class="pdesc">What it does, one or two sentences.</p>
+         <p class="pwhy">The interesting engineering decision behind it.</p>
+         <div class="metrics">
+           <span class="m">tests <b>00</b></span><span class="m">coverage <b>00%</b></span>
+         </div>
+       </div>
+============================================================ -->
+<title>Basit Sherazi — Engineering Portfolio</title>
+<style>
+  /* [EDIT: COLORS] light theme */
+  :root{
+    --bg:#F4F6F8; --surface:#E9EDF0; --ink:#0D1317; --ink2:#46535B; --ink3:#71808A;
+    --rule:#D2DADF; --accent:#0B6E8A; --warn:#A8542B; --ok:#2C6E52;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B0F12; --surface:#141A1E; --ink:#E3E9EC; --ink2:#8E9EA8; --ink3:#6B7982;
+      --rule:#222B30; --accent:#4FB8D8; --warn:#D08A5F; --ok:#6FB58C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B0F12; --surface:#141A1E; --ink:#E3E9EC; --ink2:#8E9EA8; --ink3:#6B7982;
+    --rule:#222B30; --accent:#4FB8D8; --warn:#D08A5F; --ok:#6FB58C;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--ink); font-family:var(--sans);
+       font-size:16px; line-height:1.6; margin:0; -webkit-font-smoothing:antialiased;
+       font-variant-numeric:tabular-nums;}
+  .wrap{max-width:64rem; margin:0 auto; padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  header{border-bottom:1px solid var(--rule); padding-bottom:1.8rem; margin-bottom:2.6rem;}
+  .tag{font-family:var(--mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+       color:var(--accent); margin:0 0 .8rem;}
+  h1{font-family:var(--mono); font-size:clamp(1.7rem,4.4vw,2.5rem); font-weight:600;
+     letter-spacing:-.02em; margin:0 0 .8rem; line-height:1.1;}
+  .sub{max-width:60ch; color:var(--ink2); margin:0 0 1.3rem; font-size:1.02rem;}
+  .links{display:flex; flex-wrap:wrap; gap:.4rem 1.3rem; font-family:var(--mono); font-size:.76rem;}
+  .links span{color:var(--ink3);}
+
+  h2{font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+     color:var(--ink3); font-weight:500; margin:3.2rem 0 1.3rem; padding-bottom:.5rem;
+     border-bottom:1px solid var(--rule);}
+
+  .proj{padding:1.4rem 0; border-bottom:1px solid var(--rule);}
+  .proj:last-child{border-bottom:none;}
+  .ptop{display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem .9rem; margin-bottom:.5rem;}
+  .pname{font-family:var(--mono); font-size:1.02rem; font-weight:600; letter-spacing:-.01em;}
+  .lang{font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+        color:var(--bg); background:var(--ink2); padding:.14rem .45rem; border-radius:2px;}
+  .pdesc{color:var(--ink); margin:0 0 .6rem; max-width:70ch;}
+  .pwhy{color:var(--ink2); margin:0 0 .85rem; max-width:70ch; font-size:.95rem;}
+  .metrics{display:flex; flex-wrap:wrap; gap:.35rem .5rem;}
+  .m{font-family:var(--mono); font-size:.71rem; color:var(--ink2);
+     background:var(--surface); border:1px solid var(--rule); padding:.2rem .5rem; border-radius:2px;}
+  .m b{color:var(--ink); font-weight:600;}
+
+  .oss{background:var(--surface); border:1px solid var(--rule); padding:1.1rem 1.2rem; margin-bottom:1rem;}
+  .osshead{display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem .8rem; margin-bottom:.5rem;}
+  .repo{font-family:var(--mono); font-weight:600;}
+  .status{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+          color:var(--warn); border:1px solid var(--warn); padding:.1rem .4rem; border-radius:2px;}
+  .oss p{margin:0; color:var(--ink2); font-size:.95rem; max-width:70ch;}
+  .oss p b{color:var(--ink);}
+
+  .row{display:grid; grid-template-columns:1fr; gap:.2rem 1.5rem; padding:.9rem 0;
+       border-bottom:1px solid var(--rule);}
+  @media(min-width:44rem){ .row{grid-template-columns:13rem 1fr;} }
+  .row:last-child{border-bottom:none;}
+  .rk{font-family:var(--mono); font-size:.78rem; color:var(--ink3);}
+  .rv{color:var(--ink);}
+  .rv em{color:var(--ink2); font-style:normal; font-size:.93rem; display:block; margin-top:.15rem;}
+  .certs{font-size:.95rem; color:var(--ink2); max-width:72ch;}
+  .certs b{color:var(--ink); font-weight:600;}
+  footer{margin-top:3.5rem; padding-top:1.3rem; border-top:1px solid var(--rule);
+         font-family:var(--mono); font-size:.73rem; color:var(--ink3);}
+</style>
+
+<div class="wrap">
+<!-- [EDIT: HEADER] -->
+<header>
+  <p class="tag">Engineering Portfolio</p>
+  <h1>Basit Sherazi</h1>
+  <p class="sub">I build diagnostic tooling — software that inspects other software and reports what is actually wrong. Ten public repositories in Java, Go, Python and TypeScript, plus fixes contributed upstream to security scanners other teams depend on.</p>
+  <div class="links">
+    <a href="https://github.com/BasitS-hash">github.com/BasitS-hash</a>
+    <a href="https://linkedin.com/in/basitsherazi">linkedin.com/in/basitsherazi</a>
+    <a href="mailto:basitsherazi319@gmail.com">basitsherazi319@gmail.com</a>
+    <span>Ashburn, VA · U.S. Citizen</span>
+  </div>
+</header>
+
+<!-- [EDIT: PROJECTS] one .proj block each -->
+<h2>Selected Projects</h2>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">jvm-triage</span><span class="lang">Java</span></div>
+  <p class="pdesc">Offline analyzer for JVM heap and thread dumps. Point it at a dump and it names what is holding memory or which threads are deadlocked — single jar, no agent, no GUI.</p>
+  <p class="pwhy">Byte-level parser written from the HPROF binary format specification. Retained-size attribution via a dominator tree; deadlock detection by cycle-finding on the thread wait-for graph, catching cycles the JVM's own deadlock banner misses. Every synthetic test passed until the first real dump broke it two ways — static fields were not treated as GC roots, which hid the single most common Java leak.</p>
+  <div class="metrics">
+    <span class="m">tests <b>44</b></span><span class="m">coverage <b>92%</b></span>
+    <span class="m">CI <b>JDK 21 + 24</b></span><span class="m">JUnit 5 · Maven</span>
+    <span class="m">live-JVM E2E check</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">rack-sentinel</span><span class="lang">Go</span></div>
+  <p class="pdesc">Predictive hardware failure detection from server fleet telemetry over Redfish. Ranks DIMMs by correctable-error trend and acceleration rather than raw count.</p>
+  <p class="pwhy">A flat 11,000-error DIMM is ECC doing its job; a 200-error one that doubled this week is about to take the node down. Least-squares rate with confidence scoring and power-cycle counter-reset handling. A counter the BMC did not report is recorded as absent, never zero — coercing it would make a blind controller look like healthy hardware.</p>
+  <div class="metrics">
+    <span class="m">coverage <b>88.8%</b></span><span class="m">500 hosts × 16 DIMMs in <b>15.5 ms</b></span>
+    <span class="m">CI <b>Go 1.24 + 1.25</b></span><span class="m">race detector</span>
+    <span class="m">bounded concurrency</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">SentinelView</span><span class="lang">TypeScript</span></div>
+  <p class="pdesc">Real-time SIEM dashboard. Live event stream with rule-based detection mapped to MITRE ATT&amp;CK, geographic threat map, and CSV export.</p>
+  <p class="pwhy">Five-view React + Vite front end over a Node service pushing events by WebSocket with no polling. Threat intelligence pulled hourly from abuse.ch Feodo Tracker, URLhaus and the CISA Known Exploited Vulnerabilities catalog, with graceful offline fallback. CSV export uses formula-injection-safe encoding so an exported file cannot execute when a user opens it in a spreadsheet.</p>
+  <div class="metrics">
+    <span class="m">React <b>18</b> · TypeScript <b>5</b> · Vite <b>6</b></span><span class="m">Node <b>20</b> · Socket.io</span>
+    <span class="m">Tailwind · Recharts</span><span class="m">Vitest</span><span class="m">CI + CodeQL</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">kube-sentinel</span><span class="lang">Python</span></div>
+  <p class="pdesc">Kubernetes security posture scanner. Audits manifests and live clusters, runs unattended as a CI gate, emits SARIF for downstream tooling.</p>
+  <p class="pwhy">22 automated control checks across workloads, RBAC, secrets and network policy, mapped to CIS Benchmarks, Pod Security Standards and the NSA/CISA hardening guide, each with remediation guidance rather than a bare finding.</p>
+  <div class="metrics">
+    <span class="m">checks <b>22</b></span><span class="m">tests <b>78</b></span><span class="m">coverage <b>96%</b></span>
+    <span class="m">SARIF output</span><span class="m">CIS · NSA/CISA</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">llm-guard</span><span class="lang">Python</span></div>
+  <p class="pdesc">Security scanner and runtime firewall for LLM applications — prompt-injection and jailbreak detection, output and PII leakage scanning, with an automated red-team harness.</p>
+  <p class="pwhy">Mapped to the OWASP LLM Top 10. Built around the question every AI deployment eventually has to answer: what stops this from leaking?</p>
+  <div class="metrics">
+    <span class="m">coverage <b>99%</b></span><span class="m">OWASP LLM Top 10</span>
+    <span class="m">automated red-team harness</span><span class="m">CI-gated</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">incident-response-agent</span><span class="lang">Python</span></div>
+  <p class="pdesc">Automated incident triage. Five-agent LangGraph + MCP workflow that ingests events, classifies and prioritizes them, enriches through custom tool interfaces, and writes a root-cause analysis a non-specialist can act on.</p>
+  <p class="pwhy">Served as a FastAPI microservice behind a React dashboard.</p>
+  <div class="metrics">
+    <span class="m">LangGraph · MCP</span><span class="m">FastAPI · React</span><span class="m">5-agent workflow</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">pqc-migrator</span><span class="lang">Python</span></div>
+  <p class="pdesc">Post-quantum cryptography readiness scanner. Detects quantum-vulnerable RSA and elliptic-curve usage in source code and live TLS endpoints, and generates a Crypto Bill of Materials.</p>
+  <p class="pwhy">Findings map to NIST FIPS 203/204/205 (ML-KEM, ML-DSA, SLH-DSA) and CNSA 2.0 migration timelines. The discovery problem is larger than the replacement problem — swapping an algorithm is engineering; finding every place it is used is archaeology.</p>
+  <div class="metrics">
+    <span class="m">FIPS 203/204/205</span><span class="m">CNSA 2.0</span><span class="m">CBOM output</span>
+  </div>
+</div>
+
+<div class="proj">
+  <div class="ptop"><span class="pname">dev-ops-stack · dev-ops-lab · Secure-PasswordManager-API</span></div>
+  <p class="pdesc">Full-stack application on FastAPI + React + MongoDB with Docker Compose, GitHub Actions CI/CD and live Prometheus/Grafana observability; an infrastructure-as-code lab with Terraform modules, Ansible roles and Kubernetes manifests validated end to end in CI; and a credential-storage API using AES-256 encryption and Argon2 hashing.</p>
+  <div class="metrics"><span class="m">Docker · Kubernetes</span><span class="m">GitHub Actions</span><span class="m">Prometheus · Grafana</span></div>
+</div>
+
+<!-- [EDIT: OPENSOURCE] -->
+<h2>Open-Source Contributions</h2>
+
+<div class="oss">
+  <div class="osshead"><span class="repo">gitleaks</span><span class="m">28k ★ · secret scanner · Go</span><span class="status">PR #2227 — open</span></div>
+  <p>A scan returned clean and I did not believe it. A planted-secret test showed an allowlist configuration was causing matching files to be <b>skipped during enumeration before they were ever read</b> — so real secrets in them went unreported while the tool reported success. Root-caused a disagreement between the enumeration and detection layers. The fix preserves existing behavior and ships with a table-driven regression test.</p>
+</div>
+
+<div class="oss">
+  <div class="osshead"><span class="repo">bandit</span><span class="m">PyCQA · 8.2k ★ · Python linter</span><span class="status">#1465 — reported, fix branch</span></div>
+  <p>A HIGH-severity check missed <b>requests.request(verify=False)</b>, letting an explicit TLS-certificate-validation bypass go undetected. Reported and root-caused with a fix branch; the repository restricts pull requests from non-collaborators.</p>
+</div>
+
+<!-- [EDIT: EXPERIENCE] -->
+<h2>Experience</h2>
+
+<div class="row">
+  <div class="rk">May – Aug 2026</div>
+  <div class="rv"><b>Associate Software Engineer Intern</b> · DMI (Digital Management, LLC)
+    <em>Federal health IT, regulated environment. Shipped Python services and REST APIs to production under senior code review. Built an AI-assisted conversion pipeline at 95% measured accuracy — validated against the legacy system rather than asserted, with a ≤0.1% reconciliation gate and escalation to a human on anything it could not safely resolve. Benchmarked an open-weight model against a frontier model and surfaced a silent-failure mode that headline metrics concealed. Applied post-quantum cryptography research and a written platform decision analysis presented to senior engineers and non-technical stakeholders.</em></div>
+</div>
+<div class="row">
+  <div class="rk">Nov 2025 – May 2026</div>
+  <div class="rv"><b>Geek Squad Technician</b> · Best Buy
+    <em>Owned an incoming ticket queue under time pressure — triaged and prioritized, escalated to specialists, root-caused across Windows, macOS and Linux, and documented every resolution.</em></div>
+</div>
+<div class="row">
+  <div class="rk">Aug 2025 – May 2026</div>
+  <div class="rv"><b>AI Data Specialist</b> · RWS Group
+    <em>Improved production model outputs through RLHF preference-model training; designed JSON/CSV schemas for large-scale data pipelines.</em></div>
+</div>
+
+<!-- [EDIT: EDUCATION] -->
+<h2>Education &amp; Certifications</h2>
+<div class="row">
+  <div class="rk">Expected 2028</div>
+  <div class="rv"><b>George Mason University</b> — B.S. Information Technology, Cyber Security Concentration
+    <em>GPA 3.7 · Dean's Honors List · Currently enrolled · Coursework in data structures, algorithms, networking and operating systems</em></div>
+</div>
+<p class="certs" style="margin-top:1.1rem"><b>CompTIA Security+</b> (DoD 8570/8140 IAT Level II) · <b>Microsoft Azure Security Engineer SC-500</b> · <b>Microsoft Azure Administrator AZ-104</b> · Fortinet NSE 1 · Claude API, Amazon Bedrock and AI Fluency (Anthropic) · DSPy and LangChain (DeepLearning.AI). <b>In progress:</b> AWS Certified Machine Learning Engineer, Certified Kubernetes Administrator.</p>
+
+<footer>All repositories public at github.com/BasitS-hash · Coverage and benchmark figures are from the projects' own CI.</footer>
+</div>
