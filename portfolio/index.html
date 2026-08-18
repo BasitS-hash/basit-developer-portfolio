@@ -98,6 +98,17 @@
   .certs b{color:var(--ink); font-weight:600;}
   footer{margin-top:3.5rem; padding-top:1.3rem; border-top:1px solid var(--rule);
          font-family:var(--mono); font-size:.73rem; color:var(--ink3);}
+
+  .csintro{color:var(--ink2); max-width:44rem; margin:0 0 1.6rem;}
+  .reading{max-width:44rem;}
+  h3.cs{font-family:var(--mono); font-size:1.18rem; font-weight:600; letter-spacing:-.01em;
+        margin:2.6rem 0 .3rem; line-height:1.22;}
+  h3.cs:first-child{margin-top:0;}
+  .csmeta{font-family:var(--mono); font-size:.71rem; letter-spacing:.08em; color:var(--accent);
+          margin:0 0 1.3rem; padding-bottom:.65rem; border-bottom:1px solid var(--rule);}
+  .csbody{margin:0 0 1.1rem; line-height:1.68; color:var(--ink);}
+  .jump{display:flex; flex-wrap:wrap; gap:.4rem .9rem; font-family:var(--mono); font-size:.74rem;
+        margin:1.1rem 0 0; padding-top:.9rem; border-top:1px solid var(--rule);}
 </style>
 
 <div class="wrap">
@@ -109,14 +120,43 @@
   <div class="links">
     <a href="https://github.com/BasitS-hash">github.com/BasitS-hash</a>
     <a href="https://linkedin.com/in/basitsherazi">linkedin.com/in/basitsherazi</a>
-    <a href="writing/">writing &amp; case studies</a>
     <a href="mailto:basitsherazi319@gmail.com">basitsherazi319@gmail.com</a>
     <span>Ashburn, VA · U.S. Citizen</span>
   </div>
+  <nav class="jump"><a href="#writing">Writing &amp; case studies</a><a href="#projects">Projects</a><a href="#oss">Open source</a><a href="#experience">Experience</a></nav>
 </header>
 
+<!-- [EDIT: WRITING] case studies -->
+<h2 id="writing">Writing &amp; Case Studies</h2>
+<p class="csintro">Two write-ups on the same underlying problem: systems that report success while missing what they were built to catch.</p>
+<div class="reading">
+<p class="csbody">Basit Sherazi</p>
+<h3 class="cs">The Scan Said Clean</h3>
+<p class="csmeta">gitleaks · PR #2227</p>
+<p class="csbody">I had been cleaning documentation for a password manager API I created. The examples included place holders for bearer tokens that were phony but appeared real enough for every scan to be flagged by gitleaks. The solution was to create an allowlist rule for the scanner to know those strings located within that file were allowed.</p>
+<p class="csbody">I created the rule. The scan was clear. Usually that would be the end of the story.</p>
+<p class="csbody">However, something did not sit well with me. The rule I wrote was more specific than "ignore this file" because it only needed to ignore certain specific known-fake values in the case that another condition held. While I got the correct result, I never took the opportunity to confirm that the scanner was actually still working on those files.</p>
+<p class="csbody">So I planted a secret. I placed a real-looking credential in one of the allowlisted files, the kind that should have tripped every rule gitleaks has.</p>
+<p class="csbody">The result was clean.</p>
+<p class="csbody">This was actually a much worse issue than what I had tried to mitigate--- the scanner didn't ignore the fake tokens; it completely skipped the files in question, meaning that any real secret placed in the file wouldn't be registered anywhere.</p>
+<p class="csbody">I had to delve further into the codebase than I had before. Gitleaks reaches decisions about a file in two distinct steps. First, it tries to establish whether to read the file at all or not -- this takes place at the enumeration phase. Second, for the files that were actually read, Gitleaks applies its rules of what constitutes a finding or not. My allowlist rules were interpreted differently by these two layers. While the detector saw two meaningful conditions established by my rule, the enumerator looked only for the answer to the question of whether any elements of the path pattern match or not. After this step, the enumerator just drops the file without running anything else against it after that. It is important to state that the detector does not disagree with its operation because it has never seen the file.</p>
+<p class="csbody">The fix is not complicated once you understand how it works. The enumerator has to learn to respect the condition for matching already respected by the detector so that the file can be skipped only if the whole rule applies. I posted this issue as a pull request together with a regression test confirming the fact that the problem arose due to lack of testing that would have revealed the conflict between these two layers of the software.</p>
+<p class="csbody">The aspect of the problem that I find most puzzling about this incident is that it was virtually impossible to detect that there was one. In fact, a scan that found nothing and a scan that did not scan anything at all provide exactly the same output. Both of them remain silent. Both of them provide the green results of the check. There is no reporting line "40 files skipped, all of them unread.\"</p>
+<p class="csbody">Most software products are able to report their failure. Security scanners are the exception, because success looks exactly like silence. The only way to tell a working scanner from a broken one is to test it against a problem you planted yourself.</p>
+<h3 class="cs">The Benchmark Said It Passed</h3>
+<p class="csmeta">Model evaluation · federal health IT</p>
+<p class="csbody">The most important thing that I achieved through that project was that I was able to throw out a number that seemed right.</p>
+<p class="csbody">I was trying to find out whether an open-weight model could substitute a frontier model when it came to a certain task: the translation of a legacy analytics query language into contemporary SQL. There were enough reasons to want it to work. It was cheaper and could function within our ecosystem instead of calling an API of another company, which is very important in the world of regulatory compliance.</p>
+<p class="csbody">The aggregated accuracy was satisfactory enough to make us think that it was a fair decision to adopt the newly created instrument. It was the end of an assessment on the spreadsheet, but I decided to analyze the failures instead.</p>
+<p class="csbody">The failures I reviewed were not as I expected, as the model performed well in case of simpler queries, but on the difficult queries, the ones with complex structures and unusual scoping, it did not fail visibly. It returned clean, well-formed SQL that was simply wrong.</p>
+<p class="csbody">The distinction cannot be spotted by the benchmark anyway. Consequently, a model that crashes on 5 percent of queries and a model that returns confident wrong answers on 5 percent of queries end up with the same evaluation result. And the two cannot be compared. The first one notifies humans about failures, while the other one hides the failures in the results that seem correct, which means that humans cannot identify mistakes in the output.</p>
+<p class="csbody">The solution was not somehow better model, but rather a shift in what is considered to be evidence of translation correctness. Since legacy system was being replaced, it already contained correct answers. Instead of relying on the accuracy score for evaluations, we started comparing the outputs by translating the results issued by the legacy system, thus allowing us to catch mistakes.</p>
+<p class="csbody">Even though the accuracy level was kept the same, the situation where we did not need to rely on the newly created system anymore emerged.</p>
+<p class="csbody">I have encountered similar issues in another system before: there was a scanning system that did not find infected files, as it skipped analysis of them. A different task, yet the same problem was revealed -- a robust outcome where nothing lies behind is worse than an error, as error can at least direct your attention to the question, which must be checked.</p>
+</div>
+
 <!-- [EDIT: PROJECTS] one .proj block each -->
-<h2>Selected Projects</h2>
+<h2 id="projects">Selected Projects</h2>
 
 <div class="proj">
   <div class="ptop"><span class="pname">jvm-triage</span><span class="lang">Java</span></div>
@@ -195,7 +235,7 @@
 </div>
 
 <!-- [EDIT: OPENSOURCE] -->
-<h2>Open-Source Contributions</h2>
+<h2 id="oss">Open-Source Contributions</h2>
 
 <div class="oss">
   <div class="osshead"><span class="repo">gitleaks</span><span class="m">28k ★ · secret scanner · Go</span><span class="status">PR #2227 — open</span></div>
@@ -208,7 +248,7 @@
 </div>
 
 <!-- [EDIT: EXPERIENCE] -->
-<h2>Experience</h2>
+<h2 id="experience">Experience</h2>
 
 <div class="row">
   <div class="rk">May – Aug 2026</div>
