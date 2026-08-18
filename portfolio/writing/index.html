@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Writing — Basit Sherazi</title>
+<meta name="description" content="Case studies on finding failures that reported themselves as successes.">
+<style>
+:root{--bg:#F4F6F8;--surface:#E9EDF0;--ink:#0D1317;--ink2:#46535B;--ink3:#71808A;
+--rule:#D2DADF;--accent:#0B6E8A;
+--mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0F12;--surface:#141A1E;
+--ink:#E3E9EC;--ink2:#8E9EA8;--ink3:#6B7982;--rule:#222B30;--accent:#4FB8D8;}}
+:root[data-theme="dark"]{--bg:#0B0F12;--surface:#141A1E;--ink:#E3E9EC;--ink2:#8E9EA8;
+--ink3:#6B7982;--rule:#222B30;--accent:#4FB8D8;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;
+line-height:1.68;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:44rem;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.1rem,4vw,2rem) 5rem}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.back{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;display:inline-block;margin-bottom:2rem}
+header{border-bottom:1px solid var(--rule);padding-bottom:1.5rem;margin-bottom:2.4rem}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+color:var(--accent);margin:0 0 .7rem}
+h1{font-family:var(--mono);font-size:clamp(1.5rem,4vw,2.1rem);font-weight:600;
+letter-spacing:-.02em;margin:0 0 .7rem;line-height:1.12}
+.sub{color:var(--ink2);margin:0 0 1rem;font-size:1rem}
+.contact{font-family:var(--mono);font-size:.74rem;color:var(--ink3);display:flex;
+flex-wrap:wrap;gap:.3rem 1.1rem}
+h2.cs{font-family:var(--mono);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;
+margin:3.2rem 0 .3rem;line-height:1.2;text-wrap:balance}
+h2.cs:first-of-type{margin-top:0}
+.csmeta{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--accent);
+margin:0 0 1.5rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule)}
+p{margin:0 0 1.15rem}
+footer{margin-top:4rem;padding-top:1.3rem;border-top:1px solid var(--rule);
+font-family:var(--mono);font-size:.73rem;color:var(--ink3)}
+</style></head><body>
+<div class="wrap">
+<a class="back" href="../">&larr; back to portfolio</a>
+<header>
+<p class="tag">Writing</p>
+<h1>Basit Sherazi</h1>
+<p class="sub">Case studies on finding failures that reported themselves as successes.</p>
+<div class="contact">
+<a href="mailto:basitsherazi319@gmail.com">basitsherazi319@gmail.com</a>
+<a href="https://github.com/BasitS-hash">github.com/BasitS-hash</a>
+<a href="https://linkedin.com/in/basitsherazi">linkedin.com/in/basitsherazi</a>
+</div>
+</header>
+<p>Basit Sherazi</p>
+<h2 class="cs">The Scan Said Clean</h2>
+<p class="csmeta">gitleaks · PR #2227</p>
+<p>I had been cleaning documentation for a password manager API I created. The examples included place holders for bearer tokens that were phony but appeared real enough for every scan to be flagged by gitleaks. The solution was to create an allowlist rule for the scanner to know those strings located within that file were allowed.</p>
+<p>I created the rule. The scan was clear. Usually that would be the end of the story.</p>
+<p>However, something did not sit well with me. The rule I wrote was more specific than "ignore this file" because it only needed to ignore certain specific known-fake values in the case that another condition held. While I got the correct result, I never took the opportunity to confirm that the scanner was actually still working on those files.</p>
+<p>So I planted a secret. I placed a real-looking credential in one of the allowlisted files, the kind that should have tripped every rule gitleaks has.</p>
+<p>The result was clean.</p>
+<p>This was actually a much worse issue than what I had tried to mitigate--- the scanner didn't ignore the fake tokens; it completely skipped the files in question, meaning that any real secret placed in the file wouldn't be registered anywhere.</p>
+<p>I had to delve further into the codebase than I had before. Gitleaks reaches decisions about a file in two distinct steps. First, it tries to establish whether to read the file at all or not -- this takes place at the enumeration phase. Second, for the files that were actually read, Gitleaks applies its rules of what constitutes a finding or not. My allowlist rules were interpreted differently by these two layers. While the detector saw two meaningful conditions established by my rule, the enumerator looked only for the answer to the question of whether any elements of the path pattern match or not. After this step, the enumerator just drops the file without running anything else against it after that. It is important to state that the detector does not disagree with its operation because it has never seen the file.</p>
+<p>The fix is not complicated once you understand how it works. The enumerator has to learn to respect the condition for matching already respected by the detector so that the file can be skipped only if the whole rule applies. I posted this issue as a pull request together with a regression test confirming the fact that the problem arose due to lack of testing that would have revealed the conflict between these two layers of the software.</p>
+<p>The aspect of the problem that I find most puzzling about this incident is that it was virtually impossible to detect that there was one. In fact, a scan that found nothing and a scan that did not scan anything at all provide exactly the same output. Both of them remain silent. Both of them provide the green results of the check. There is no reporting line "40 files skipped, all of them unread.\"</p>
+<p>Most software products are able to report their failure. Security scanners are the exception, because success looks exactly like silence. The only way to tell a working scanner from a broken one is to test it against a problem you planted yourself.</p>
+<h2 class="cs">The Benchmark Said It Passed</h2>
+<p class="csmeta">Model evaluation · federal health IT</p>
+<p>The most important thing that I achieved through that project was that I was able to throw out a number that seemed right.</p>
+<p>I was trying to find out whether an open-weight model could substitute a frontier model when it came to a certain task: the translation of a legacy analytics query language into contemporary SQL. There were enough reasons to want it to work. It was cheaper and could function within our ecosystem instead of calling an API of another company, which is very important in the world of regulatory compliance.</p>
+<p>The aggregated accuracy was satisfactory enough to make us think that it was a fair decision to adopt the newly created instrument. It was the end of an assessment on the spreadsheet, but I decided to analyze the failures instead.</p>
+<p>The failures I reviewed were not as I expected, as the model performed well in case of simpler queries, but on the difficult queries, the ones with complex structures and unusual scoping, it did not fail visibly. It returned clean, well-formed SQL that was simply wrong.</p>
+<p>The distinction cannot be spotted by the benchmark anyway. Consequently, a model that crashes on 5 percent of queries and a model that returns confident wrong answers on 5 percent of queries end up with the same evaluation result. And the two cannot be compared. The first one notifies humans about failures, while the other one hides the failures in the results that seem correct, which means that humans cannot identify mistakes in the output.</p>
+<p>The solution was not somehow better model, but rather a shift in what is considered to be evidence of translation correctness. Since legacy system was being replaced, it already contained correct answers. Instead of relying on the accuracy score for evaluations, we started comparing the outputs by translating the results issued by the legacy system, thus allowing us to catch mistakes.</p>
+<p>Even though the accuracy level was kept the same, the situation where we did not need to rely on the newly created system anymore emerged.</p>
+<p>I have encountered similar issues in another system before: there was a scanning system that did not find infected files, as it skipped analysis of them. A different task, yet the same problem was revealed -- a robust outcome where nothing lies behind is worse than an error, as error can at least direct your attention to the question, which must be checked.</p>
+<footer>Written by Basit Sherazi. Referenced work is public at github.com/BasitS-hash.</footer>
+</div></body></html>
